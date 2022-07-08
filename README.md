@@ -4,7 +4,7 @@ This Dockerfile create a development environment for PSX application development
 The environment contains a working GCC 12 C/C++ cross-compiler and a pre-compiled
 copy of [libpsn00b](https://github.com/Lameguy64/PSn00bSDK/tree/v0.19).
 
-The `psx-devshell` script will build (with `-b`) and run the docker image. The
+The `run` script will build (with `-b`) and run the docker image. The
 current working directory will be mounted to `/opt/src`. Start a new project like
 so:
 ```bash

@@ -49,7 +49,9 @@ RUN apt install -y git ninja-build
 RUN git clone --depth 1 -b ${sdk_version} https://github.com/Lameguy64/PSn00bSDK.git
 WORKDIR /opt/sdk/PSn00bSDK
 RUN git submodule update --init --recursive --depth 1
-RUN cmake --preset default --install-prefix=/usr/local/libpsn00b .
+# Hack - remove -O2 flag so cmake build type flag works
+RUN sed -i 's/-O2/#-O2/' libpsn00b/cmake/flags.cmake
+RUN cmake --preset default --install-prefix=/usr/local/libpsn00b -DCMAKE_BUILD_TYPE=MinSizeRel .
 RUN cmake --build ./build
 RUN cmake --install ./build
 
